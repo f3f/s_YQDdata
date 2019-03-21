@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body data-genuitec-lp-enabled="false" data-genuitec-file-id="wc1-2" data-genuitec-path="/SearchWeb_OME/WebRoot/chart/quanwangzhutu.html">
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+	<div id="main" style="height:550px;width:100%; margin:10px auto;" data-genuitec-lp-enabled="false" data-genuitec-file-id="wc1-2" data-genuitec-path="/SearchWeb_OME/WebRoot/chart/quanwangzhutu.html"></div>
+
+<!-- ECharts单文件引入 -->
+<script src="../../js/charts/echarts-all-3.js"></script>
+<script>
+	// 基于准备好的dom，初始化echarts图表
+	var myChart = echarts.init(document.getElementById('main'));
+
+	option = {
+		tooltip : {
+			trigger: 'item',
+			axisPointer : {
+				type : 'line',
+				lineStyle:{
+					color:'#00c0ff',
+					width:1
+				}
+			},
+			formatter: '{c}',
+			backgroundColor:'rgba(11,78,217,0.5)',
+			position: 'top'
+		},
+		grid: {
+			left: '3%',
+			right: '4%',
+			bottom: '3%',
+			containLabel: true
+		},
+		xAxis: {
+			type : 'category',
+			axisTick:{show:false},
+			splitLine:{show:false},
+			axisLine:{
+				lineStyle:{
+					color:'rgba(0,102,255,0.8)'
+				}
+			},
+			axisLabel:{
+				textStyle:{
+					color:'rgba(255,255,255,0.6)'
+				}
+			},
+			data :  ['新闻','微信','微博','论坛','博客','贴吧','视频']
+		},
+		yAxis: {
+			type : 'value',
+			/* max:70000000,
+			min:10000000, */
+			splitNumber:7,
+			axisLine:{show:false},
+			axisTick:{show:false},
+			axisLabel:{
+				textStyle:{
+					color:'rgba(255,255,255,0.6)'
+				}
+			},
+			splitLine:{
+				lineStyle:{
+					color:'rgba(0,204,255,0.1)'
+				}
+			}
+		},
+		series: [
+			{
+				type: 'bar',
+				barWidth : 68,
+				itemStyle:{
+					normal: {
+						color:'rgba(0,102,204,0.5)'
+					}
+				},
+				data:[645678,301542,1405678,333456,233456,152834,53440]
+			}
+		]
+	};
+
+
+
+	//使Echarts图表自适应响应窗口变化
+	window.onresize = myChart.resize;
+	// 为echarts对象加载数据
+	myChart.setOption(option);
+</script>
+</body>
